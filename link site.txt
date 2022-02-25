@@ -1,1 +1,0 @@
-https://test-mailtool.netlify.app/index.html

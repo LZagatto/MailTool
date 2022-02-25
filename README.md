@@ -23,6 +23,11 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Você possui `<VSCode>`.
 
 
+## Site
+
+Se deseja visualizar o modelo do site em funcionamento <a href="https://test-mailtool.netlify.app/index.html">clique aqui!</a>:
+
+
 ## 🤝 Colaboradores
 
 Pessoas que contribuíram para este projeto:
