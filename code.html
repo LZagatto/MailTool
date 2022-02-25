@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<script>
+
+</script>
+
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Kyndryl</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="./index.html">Home</a></li>
+          <li class="active"><a href="./code.html">Code</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-2 ">
+      </div>
+      <div class="col-sm-8 text-left">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item ">
+            <a class="nav-link active" id="html-tab" data-toggle="tab" href="#html" role="tab" aria-controls="html" aria-selected="true">CODE - Test</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " id="css-tab" data-toggle="tab" href="#css" role="tab" aria-controls="css" aria-selected="false"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Css</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="js-tab" data-toggle="tab" href="#js" role="tab" aria-controls="js" aria-selected="false"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Js</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="mailTool-tab" data-toggle="tab" href="#mailTool" role="tab" aria-controls="mailTool" aria-selected="false"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Html</a>
+          </li>
+        </ul>
+        <div class=" ">
+          <h3 id="hidden">Escolha uma opção acima</h3>
+        </div>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade  " id="html" role="tabpanel" aria-labelledby="html-tab">
+            <div class=" color">
+              <div contenteditable="false" id="myInput1" aria-disabled="true">
+                <pre>
+                    <code>
+  var names = [
+    'John Doe',
+    'John Doe',
+    'John Doe',
+    'Peter Parker',
+    'Mary Jane Watson-Parker',
+    'James Doe',
+    'John Elvis Doe',
+    'Jane_Doe',
+    'Penny Parker',
+    'Penny Parker',
+    'Mary Jane Watson Parker',
+    'Fernanda Gonçalves',
+    'Julio Ribeiro Luiz felix-bernardino',
+    'Penny barker',
+    'jenny rarker',
+    'Penny tarker',
+    'jenny uarker',
+    'Penny iarker',
+    'Penny larker',
+    'Penny larker',
+    'Penny qarker',
+    'oenny qarker',
+    'Penny Parker',
+    'Penny sarker',
+    'Penny sarker',
+    'Juliana Cristina Camara',
+    'João Carlos Camara',
+  ];
+
+  var re = /[$-/:-?{-~!"^_`\[\]]/;
+  var result1 = [];
+  var valid = [];
+  var validacao = [];
+
+  for (var i = 0; i < names.length; i++) {
+
+    // set domínio do email da empresa
+    var domain = '@company.com';
+
+    //separar palavras com base no espaço entre elas
+
+      var result = names[i].replace(re, " ");
+      valid.push(result)
+      var result1 = valid[i].split(' ');
+
+    //separando o sobrenome do funcionário
+    var sobrenome = result1[result1.length - 1];
+
+    //retirando o sobrenome da lista
+    if (result1.length <= 2) {
+      var removed = result1.splice(1, Number.MAX_VALUE);
+    } else {
+      var removed = result1.splice(2, Number.MAX_VALUE);
+    }
+
+    //dentro da lista de nomes/(nomes compostos) capturar somente a primeira letra da palavra(s)
+    var teste = result1.map((v) => v[0]);
+
+    if (teste.length >= 2) {
+      var mail = sobrenome + '.' + teste[0] + '.' + teste[1] + domain;
+      var finalMail = mail.toLowerCase();
+      validacao.push(finalMail);
+    } else {
+      var mail = sobrenome + '.' + teste[0] + domain;
+      var finalMail = mail.toLowerCase();
+      validacao.push(finalMail);
+    }
+  }
+
+  //validação dos emails iguais e inserção dos números aos repetidos
+  var adicao = 1;
+  var qtdArrays = validacao.length
+  var idx = validacao.lastIndexOf(validacao[validacao.length-1]);
+
+  for(i=0;i<=qtdArrays;i++){
+    for(t=0;t<=qtdArrays;t++){
+      if(t==qtdArrays){
+        adicao = 1
+      }
+      if(validacao[i] != undefined || validacao[t] != undefined){
+        if(validacao[i] == validacao[t] && i!=t){
+          var validado = validacao[t].replace("@", (adicao + '@'))
+          adicao++
+          validacao[t] = validado
+        }else if(validacao[i] != validacao[t]){
+          continue;
+        }
+      }else{
+      }
+    }
+  } 
+
+
+
+
+                    </code>
+                  </pre>
+                <div class="tab-pane fade" id="css" role="tabpanel" aria-labelledby="css-tab">
+                  <div class=" color">
+                    <div contenteditable="true" id="myInput2">
+                      <pre>
+                          <code>
+                            var names = [
+                              'John Doe',
+                              'John Doe',
+                              'John Doe',
+                              'Peter Parker',
+                              'Mary Jane Watson-Parker',
+                              'James Doe',
+                              'John Elvis Doe',
+                              'Jane_Doe',
+                              'Penny Parker',
+                              'Penny Parker',
+                              'Mary Jane Watson Parker',
+                              'Fernanda Gonçalves',
+                              'Julio Ribeiro Luiz felix-bernardino',
+                              'Penny barker',
+                              'jenny rarker',
+                              'Penny tarker',
+                              'jenny uarker',
+                              'Penny iarker',
+                              'Penny larker',
+                              'Penny larker',
+                              'Penny qarker',
+                              'oenny qarker',
+                              'Penny Parker',
+                              'Penny sarker',
+                              'Penny sarker',
+                              'Juliana Cristina Camara',
+                              'João Carlos Camara',
+                            ];
+      
+                            var re = /[$-/:-?{-~!"^_`\[\]]/;
+                            var result1 = [];
+                            var valid = [];
+                            var validacao = [];
+      
+                            for (var i = 0; i < names.length; i++) {
+      
+                              // set domínio do email da empresa
+                              var domain = '@company.com';
+      
+                              //separar palavras com base no espaço entre elas
+      
+                                var result = names[i].replace(re, " ");
+                                valid.push(result)
+                                var result1 = valid[i].split(' ');
+      
+                              //separando o sobrenome do funcionário
+                              var sobrenome = result1[result1.length - 1];
+      
+                              //retirando o sobrenome da lista
+                              if (result1.length <= 2) {
+                                var removed = result1.splice(1, Number.MAX_VALUE);
+                              } else {
+                                var removed = result1.splice(2, Number.MAX_VALUE);
+                              }
+      
+                              //dentro da lista de nomes/(nomes compostos) capturar somente a primeira letra da palavra(s)
+                              var teste = result1.map((v) => v[0]);
+      
+                              if (teste.length >= 2) {
+                                var mail = sobrenome + '.' + teste[0] + '.' + teste[1] + domain;
+                                var finalMail = mail.toLowerCase();
+                                validacao.push(finalMail);
+                              } else {
+                                var mail = sobrenome + '.' + teste[0] + domain;
+                                var finalMail = mail.toLowerCase();
+                                validacao.push(finalMail);
+                              }
+                            }
+      
+                            //validação dos emails iguais e inserção dos números aos repetidos
+                            var adicao = 1;
+                            var qtdArrays = validacao.length
+                            var idx = validacao.lastIndexOf(validacao[validacao.length-1]);
+      
+                            for(i=0;i<=qtdArrays;i++){
+                              for(t=0;t<=qtdArrays;t++){
+                                if(t==qtdArrays){
+                                  adicao = 1
+                                }
+                                if(validacao[i] != undefined || validacao[t] != undefined){
+                                  if(validacao[i] == validacao[t] && i!=t){
+                                    var validado = validacao[t].replace("@", (adicao + '@'))
+                                    adicao++
+                                    validacao[t] = validado
+                                  }else if(validacao[i] != validacao[t]){
+                                    continue;
+                                  }
+                                }else{
+                                }
+                              }
+                            }
+                          </code>
+                        </pre>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="js" role="tabpanel" aria-labelledby="js-tab">
+                    <div class=" color">
+                      <div contenteditable="true" id="myInput3">
+                        <pre>
+                            <code>
+                              var names = [
+                                'John Doe',
+                                'John Doe',
+                                'John Doe',
+                                'Peter Parker',
+                                'Mary Jane Watson-Parker',
+                                'James Doe',
+                                'John Elvis Doe',
+                                'Jane_Doe',
+                                'Penny Parker',
+                                'Penny Parker',
+                                'Mary Jane Watson Parker',
+                                'Fernanda Gonçalves',
+                                'Julio Ribeiro Luiz felix-bernardino',
+                                'Penny barker',
+                                'jenny rarker',
+                                'Penny tarker',
+                                'jenny uarker',
+                                'Penny iarker',
+                                'Penny larker',
+                                'Penny larker',
+                                'Penny qarker',
+                                'oenny qarker',
+                                'Penny Parker',
+                                'Penny sarker',
+                                'Penny sarker',
+                                'Juliana Cristina Camara',
+                                'João Carlos Camara',
+                              ];
+        
+                              var re = /[$-/:-?{-~!"^_`\[\]]/;
+                              var result1 = [];
+                              var valid = [];
+                              var validacao = [];
+        
+                              for (var i = 0; i < names.length; i++) {
+        
+                                // set domínio do email da empresa
+                                var domain = '@company.com';
+        
+                                //separar palavras com base no espaço entre elas
+        
+                                  var result = names[i].replace(re, " ");
+                                  valid.push(result)
+                                  var result1 = valid[i].split(' ');
+        
+                                //separando o sobrenome do funcionário
+                                var sobrenome = result1[result1.length - 1];
+        
+                                //retirando o sobrenome da lista
+                                if (result1.length <= 2) {
+                                  var removed = result1.splice(1, Number.MAX_VALUE);
+                                } else {
+                                  var removed = result1.splice(2, Number.MAX_VALUE);
+                                }
+        
+                                //dentro da lista de nomes/(nomes compostos) capturar somente a primeira letra da palavra(s)
+                                var teste = result1.map((v) => v[0]);
+        
+                                if (teste.length >= 2) {
+                                  var mail = sobrenome + '.' + teste[0] + '.' + teste[1] + domain;
+                                  var finalMail = mail.toLowerCase();
+                                  validacao.push(finalMail);
+                                } else {
+                                  var mail = sobrenome + '.' + teste[0] + domain;
+                                  var finalMail = mail.toLowerCase();
+                                  validacao.push(finalMail);
+                                }
+                              }
+        
+                              //validação dos emails iguais e inserção dos números aos repetidos
+                              var adicao = 1;
+                              var qtdArrays = validacao.length
+                              var idx = validacao.lastIndexOf(validacao[validacao.length-1]);
+        
+                              for(i=0;i<=qtdArrays;i++){
+                                for(t=0;t<=qtdArrays;t++){
+                                  if(t==qtdArrays){
+                                    adicao = 1
+                                  }
+                                  if(validacao[i] != undefined || validacao[t] != undefined){
+                                    if(validacao[i] == validacao[t] && i!=t){
+                                      var validado = validacao[t].replace("@", (adicao + '@'))
+                                      adicao++
+                                      validacao[t] = validado
+                                    }else if(validacao[i] != validacao[t]){
+                                      continue;
+                                    }
+                                  }else{
+                                  }
+                                }
+                              }
+                            </code>
+                          </pre>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="mailTool" role="tabpanel" aria-labelledby="mailTool-tab">
+                      <div class=" color">
+                        <div contenteditable="true" id="myInput4">
+                          <pre>
+                              <code>
+                                var names = [
+                                  'John Doe',
+                                  'John Doe',
+                                  'John Doe',
+                                  'Peter Parker',
+                                  'Mary Jane Watson-Parker',
+                                  'James Doe',
+                                  'John Elvis Doe',
+                                  'Jane_Doe',
+                                  'Penny Parker',
+                                  'Penny Parker',
+                                  'Mary Jane Watson Parker',
+                                  'Fernanda Gonçalves',
+                                  'Julio Ribeiro Luiz felix-bernardino',
+                                  'Penny barker',
+                                  'jenny rarker',
+                                  'Penny tarker',
+                                  'jenny uarker',
+                                  'Penny iarker',
+                                  'Penny larker',
+                                  'Penny larker',
+                                  'Penny qarker',
+                                  'oenny qarker',
+                                  'Penny Parker',
+                                  'Penny sarker',
+                                  'Penny sarker',
+                                  'Juliana Cristina Camara',
+                                  'João Carlos Camara',
+                                ];
+          
+                                var re = /[$-/:-?{-~!"^_`\[\]]/;
+                                var result1 = [];
+                                var valid = [];
+                                var validacao = [];
+          
+                                for (var i = 0; i < names.length; i++) {
+          
+                                  // set domínio do email da empresa
+                                  var domain = '@company.com';
+          
+                                  //separar palavras com base no espaço entre elas
+          
+                                    var result = names[i].replace(re, " ");
+                                    valid.push(result)
+                                    var result1 = valid[i].split(' ');
+          
+                                  //separando o sobrenome do funcionário
+                                  var sobrenome = result1[result1.length - 1];
+          
+                                  //retirando o sobrenome da lista
+                                  if (result1.length <= 2) {
+                                    var removed = result1.splice(1, Number.MAX_VALUE);
+                                  } else {
+                                    var removed = result1.splice(2, Number.MAX_VALUE);
+                                  }
+          
+                                  //dentro da lista de nomes/(nomes compostos) capturar somente a primeira letra da palavra(s)
+                                  var teste = result1.map((v) => v[0]);
+          
+                                  if (teste.length >= 2) {
+                                    var mail = sobrenome + '.' + teste[0] + '.' + teste[1] + domain;
+                                    var finalMail = mail.toLowerCase();
+                                    validacao.push(finalMail);
+                                  } else {
+                                    var mail = sobrenome + '.' + teste[0] + domain;
+                                    var finalMail = mail.toLowerCase();
+                                    validacao.push(finalMail);
+                                  }
+                                }
+          
+                                //validação dos emails iguais e inserção dos números aos repetidos
+                                var adicao = 1;
+                                var qtdArrays = validacao.length
+                                var idx = validacao.lastIndexOf(validacao[validacao.length-1]);
+          
+                                for(i=0;i<=qtdArrays;i++){
+                                  for(t=0;t<=qtdArrays;t++){
+                                    if(t==qtdArrays){
+                                      adicao = 1
+                                    }
+                                    if(validacao[i] != undefined || validacao[t] != undefined){
+                                      if(validacao[i] == validacao[t] && i!=t){
+                                        var validado = validacao[t].replace("@", (adicao + '@'))
+                                        adicao++
+                                        validacao[t] = validado
+                                      }else if(validacao[i] != validacao[t]){
+                                        continue;
+                                      }
+                                    }else{
+                                    }
+                                  }
+                                }
+                              </code>
+                            </pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer">
+                  <p class="invert_color">Created by <b class="invert_color">Leonardo Zagatto</b></p>
+                  <hr>
+                  <a href="https://github.com/LZagatto" target="_blank"><i class="fa fa-github whitelogo"></i></a>
+                  <span class="whitetext">&nbsp;|&nbsp;</span>
+                  <a href="https://www.linkedin.com/in/leonardo-zagatto/" target="_blank"><i class="fa fa-linkedin whitelogo"></i></a>
+                  <span class="whitetext">&nbsp;|&nbsp;</span>
+                  <a href="https://codepen.io/DepR" target="_blank"><i class="fa fa-codepen whitelogo"></i></a>
+                </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="./js/script.js"></script>
+<script src="./js/mailTool.js"></script>
+
+</html>
